@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, element, by } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -10,7 +10,16 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to angular-tour-of-heroes!');
+    expect(page.getTitleText()).toEqual('Tour of Heroes');
+  });
+
+  it('should go to the Heroes Page from the Dashboard with the Heroes Link', () => {
+    page.navigateTo();
+    let heroesLink = element(by.css('#heroes-link'));
+    heroesLink.click();
+    let header2 = element(by.tagName('h2'));
+    let header2Text = header2.getText();
+    expect(header2Text).toBe('My Heroes');
   });
 
   afterEach(async () => {
