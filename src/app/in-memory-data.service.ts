@@ -1,15 +1,18 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Hero } from './hero';
 import { Injectable } from '@angular/core';
-import { HEROES } from './mock-heroes';
+import { HEROES } from './hero-data';
+import { POWERS } from './power-data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const heroes = HEROES
-    return {heroes};
+    const heroes = HEROES;
+    const powers = POWERS;
+
+    return {heroes, powers};
   }
 
   // Overrides the genId method to ensure that a hero always has an id.
