@@ -13,8 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 
-import { HttpRequestInterceptor } from './interceptor';
-import {HttpMockRequestInterceptor} from './http-mock-request.interceptor';
+import { HttpMockRequestInterceptor } from './http-mock-request.interceptor';
 
 import { environment } from '../environments/environment';
 
@@ -38,13 +37,13 @@ export const isMock = environment.mock;
         InMemoryDataService, { dataEncapsulation: false }
     ),
   ],
-  providers: [
+  providers: isMock? [
     {
         provide: HTTP_INTERCEPTORS,
-        useClass: isMock? HttpMockRequestInterceptor : HttpRequestInterceptor,
+        useClass: HttpMockRequestInterceptor,
         multi: true
     }
-  ],
+  ]: null,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

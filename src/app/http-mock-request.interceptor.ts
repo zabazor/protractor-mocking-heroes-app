@@ -6,7 +6,7 @@ import { HEROESMock } from './mock-heroes';
 const httpMockedResponces = [
     {
         url: 'api/heroes',
-        json: HEROESMock
+        data: HEROESMock
     }
 ];
 
@@ -18,7 +18,7 @@ export class HttpMockRequestInterceptor implements HttpInterceptor {
         for (const mockedResponce of httpMockedResponces) {
             if (request.url === mockedResponce.url) {
                 console.log('Loaded from json : ' + request.url);
-                let httpResponce = new HttpResponse({ status: 200, body: ((mockedResponce.json) as any) });
+                let httpResponce = new HttpResponse({ status: 200, body: ((mockedResponce.data) as any) });
                 httpResponce.body
                 return of(httpResponce);
             }

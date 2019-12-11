@@ -16,13 +16,12 @@ describe('heroes.component', () => {
     expect(header2Text).toBe('My Heroes');
   });
 
-  // Start: Tests that use "real" data with the http service
   it('should confirm the name of hero.id=11 with "real" data', () => {
     let heroId = 11;
     let hero11Link = element(by.css(`#hero${heroId}`));
     let hero11NameSpan = hero11Link.element(by.css(`.hero-name`));
     let hero11Name = hero11NameSpan.getText();
-    expect(hero11Name).toBe('Dr Nice');
+    expect(hero11Name).toBe('Whimp');
   });
 
   it('should confirm the name of hero.id=16 with "real" data', () => {
@@ -30,30 +29,8 @@ describe('heroes.component', () => {
     let hero16Link = element(by.css(`#hero${heroId}`));
     let hero16NameSpan = hero16Link.element(by.css(`.hero-name`));
     let hero16Name = hero16NameSpan.getText();
-    expect(hero16Name).toBe('RubberMan');
+    expect(hero16Name).toBe('D\'Feet');
   });
-  // End: Tests that use "real" data with the http service
-
-
-  // Start: Tests that use "Mocked" data
-  it('should confirm the name of hero.id=11 with "real" data', () => {
-    // browser.addMockModule('httpMocker', () => {
-    //     angular.module('httpMocker', ['ngMockE2E'])
-    //     .run(function($httpBackend) {
-    //         $httpBackend.whenGET('api/heroes').respond(of(HEROESMock));
-    //     });
-    // });
-
-
-    let heroId = 11;
-    let hero11Link = element(by.css(`#hero${heroId}`));
-    let hero11NameSpan = hero11Link.element(by.css(`.hero-name`));
-    let hero11Name = hero11NameSpan.getText();
-    expect(hero11Name).toBe('Dr Nice');
-  });
-  // End: Tests that use "Mocked" data
-
-
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
