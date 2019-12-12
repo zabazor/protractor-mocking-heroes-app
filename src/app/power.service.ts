@@ -3,10 +3,8 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Hero } from './hero';
-import { HEROES } from './hero-data';
 import { MessageService } from './message.service';
-import {Power} from './power';
+import { Power } from './power';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +34,7 @@ export class PowerService {
         const url = `${this.powerUrl}/?heroId=${id}`;
         return this.http.get<Power[]>(url).pipe(
         tap(_ => this.log(`fetched powers for hero id=${id}`)),
-        catchError(this.handleError<Power[]>(`getHero id=${id}`))
+        catchError(this.handleError<Power[]>(`getHeroPowers id=${id}`))
         );
     }
 
